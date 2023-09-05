@@ -1,3 +1,3 @@
 # we-sdk-bom
 
-Bill of Material (BOM) for we-sdk-dependencies
+Bill of Material (BOM) for we-sdk projects
