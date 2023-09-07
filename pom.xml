@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
 
     <!--    version sets by jgitver     -->
-    <version>${project.version} </version>
+    <version>0.0.0</version>
 
     <name>we-sdk bill of materials</name>
 
