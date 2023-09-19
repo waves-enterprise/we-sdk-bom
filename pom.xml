@@ -11,6 +11,8 @@
     <version>0.0.0</version>
 
     <name>we-sdk-bom</name>
+    <description>WE SDK Bill Of Materials</description>
+    <url>https://github.com/waves-enterprise/we-sdk-bom</url>
 
     <licenses>
         <license>
@@ -169,17 +171,20 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
+                        <groupId>org.simplify4u.plugins</groupId>
+                        <artifactId>sign-maven-plugin</artifactId>
+                        <version>1.0.1</version>
                         <executions>
                             <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <serverId>sonatype-sign-key-id</serverId>
+                        </configuration>
+                        <!-- see https://www.simplify4u.org/sign-maven-plugin/ -->
                     </plugin>
                 </plugins>
             </build>
