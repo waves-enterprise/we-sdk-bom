@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wavesenterprise</groupId>
@@ -9,14 +10,34 @@
     <!--    version sets by jgitver     -->
     <version>0.0.0</version>
 
-    <name>we-sdk bill of materials</name>
+    <name>we-sdk-bom</name>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>kt3</id>
+            <name>Stepan Kashintsev</name>
+            <email>kpote3@gmail.com</email>
+        </developer>
+        <developer>
+            <id>donyfutura</id>
+            <name>Daniil Georgiev</name>
+            <email>donyfutura@gmail.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <we-node-client.version>0.3.61-438bcd57-SNAPSHOT</we-node-client.version>
         <we-contract-sdk.version>1.2.30-19841a5a-SNAPSHOT</we-contract-sdk.version>
         <we-sdk-spring.version>0.0.35-8b3bc695-SNAPSHOT</we-sdk-spring.version>
         <we-tx-observer.version>0.0.12-d63cbf0a-SNAPSHOT</we-tx-observer.version>
-        <spring-boot-dependencies.version>2.6.7</spring-boot-dependencies.version>
+        <feign.version>11.10</feign.version>
         <netty.version>4.1.34.Final</netty.version>
         <grpc.version>1.20.0</grpc.version>
         <kotlin.version>1.6.21</kotlin.version>
@@ -31,7 +52,7 @@
 
     <distributionManagement>
         <repository>
-            <id>we-releases</id>
+            <id>sonatype-releases</id>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
         <snapshotRepository>
@@ -42,7 +63,7 @@
 
     <repositories>
         <repository>
-            <id>we-releases</id>
+            <id>sonatype-releases</id>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
         <repository>
@@ -63,6 +84,7 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>3.1.1</version>
             </plugin>
+
         </plugins>
     </build>
 
@@ -112,11 +134,18 @@
                 <type>pom</type>
             </dependency>
             <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-bom</artifactId>
+                <version>${feign.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-bom</artifactId>
                 <version>${kotlin.version}</version>
                 <type>pom</type>
-                <scope>runtime</scope>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlinx</groupId>
@@ -127,5 +156,34 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
