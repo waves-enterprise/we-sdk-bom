@@ -1,4 +1,4 @@
-image: maven:3.9.4-eclipse-temurin-8-alpine
+image: maven:latest
 
 cache:
   paths:
@@ -19,9 +19,9 @@ tests&build_for_maven_central:
   script:
     - cat > /root/.m2/settings.xml
     - cat $we_maven_central_gpg | base64 --decode > "$(pwd)/we_maven_central.gpg"
-    - echo "<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd\"><servers><server><id>sonatype-releases</id><username>${SONATYPE_USER}</username><password>${SONATYPE_PASSWORD}</password></server><server><id>we-snapshots</id><username>${MAVEN_USER}</username><password>${MAVEN_PASSWORD}</password></server><server><id>sonatype-sign-key-id</id><username>${SIGN_KEY_ID}</username><passphrase>${SIGN_PASSWORD}</passphrase><privateKey>$(pwd)/we_maven_central.pgp</privateKey></server></servers></settings>" > /root/.m2/settings.xml
+    - echo "<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd\"><servers><server><id>sonatype-releases</id><username>${SONATYPE_USER}</username><password>${SONATYPE_PASSWORD}</password></server><server><id>we-snapshots</id><username>${MAVEN_USER}</username><password>${MAVEN_PASSWORD}</password></server></servers></settings>" > /root/.m2/settings.xml
     - mvn test compile
-    - mvn install -DperformRelease=true
+    - mvn install -DperformRelease=true -X
     - mvn deploy:deploy -DrepositoryId=sonatype-releases
   only:
     - master

@@ -182,7 +182,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <serverId>sonatype-sign-key-id</serverId>
+                            <keyFile>$PWD/we_maven_central.gpg</keyFile>
                         </configuration>
                         <!-- see https://www.simplify4u.org/sign-maven-plugin/ -->
                     </plugin>
