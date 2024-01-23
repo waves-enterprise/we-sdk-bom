@@ -13,6 +13,8 @@ tests:
     - mvn test compile
   only:
     - merge_requests
+  tags:
+    - integrator
 
 tests&build_for_maven_central:
   stage: deploy
@@ -26,6 +28,8 @@ tests&build_for_maven_central:
     - mvn clean deploy -DperformRelease=true
   only:
     - master
+  tags:
+    - integrator
 
 tests&build:
   script:
@@ -38,4 +42,6 @@ tests&build:
     - /^.*rc.*$/
     - /^.*release.*$/
     - /^.*hotfix.*$/
+  tags:
+    - integrator
 
