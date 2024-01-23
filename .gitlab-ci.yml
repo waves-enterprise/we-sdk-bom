@@ -14,7 +14,9 @@ tests:
   only:
     - merge_requests
   tags:
-    - integrator
+    - integration-tests
+    - node
+    - wavesenterprise
 
 tests&build_for_maven_central:
   stage: deploy
@@ -29,7 +31,9 @@ tests&build_for_maven_central:
   only:
     - master
   tags:
-    - integrator
+    - integration-tests
+    - node
+    - wavesenterprise
 
 tests&build:
   script:
@@ -43,5 +47,7 @@ tests&build:
     - /^.*release.*$/
     - /^.*hotfix.*$/
   tags:
-    - integrator
+    - integration-tests
+    - node
+    - wavesenterprise
 
