@@ -35,10 +35,11 @@
     </developers>
 
     <properties>
-        <we-node-client.version>1.2.0</we-node-client.version>
-        <we-contract-sdk.version>1.3.1</we-contract-sdk.version>
-        <we-sdk-spring.version>1.0.2</we-sdk-spring.version>
-        <we-tx-observer.version>1.1.2</we-tx-observer.version>
+        <we-node-client.version>1.3.1</we-node-client.version>
+        <we-contract-sdk.version>1.3.2</we-contract-sdk.version>
+        <we-sdk-spring.version>1.0.3</we-sdk-spring.version>
+        <we-tx-observer.version>1.1.3</we-tx-observer.version>
+        <wrc-common.version>1.0.0</wrc-common.version>
         <feign.version>11.10</feign.version>
         <netty.version>4.1.34.Final</netty.version>
         <grpc.version>1.20.0</grpc.version>
@@ -117,6 +118,13 @@
                 <groupId>com.wavesenterprise</groupId>
                 <artifactId>we-tx-observer-bom</artifactId>
                 <version>${we-tx-observer.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.wavesenterprise</groupId>
+                <artifactId>wrc-common-bom</artifactId>
+                <version>${wrc-common.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
