@@ -43,11 +43,11 @@
     </developers>
 
     <properties>
-        <we-node-client.version>1.4.0</we-node-client.version>
-        <we-contract-sdk.version>1.3.2</we-contract-sdk.version>
-        <we-sdk-spring.version>1.0.3</we-sdk-spring.version>
-        <we-tx-observer.version>1.5.0</we-tx-observer.version>
-        <wrc-common.version>1.1.0</wrc-common.version>
+        <we-node-client.version>1.4.1</we-node-client.version>
+        <we-contract-sdk.version>1.3.4</we-contract-sdk.version>
+        <we-sdk-spring.version>1.0.5</we-sdk-spring.version>
+        <we-tx-observer.version>1.5.1</we-tx-observer.version>
+        <wrc-common.version>1.1.1</wrc-common.version>
         <feign.version>11.10</feign.version>
         <netty.version>4.1.34.Final</netty.version>
         <grpc.version>1.20.0</grpc.version>
