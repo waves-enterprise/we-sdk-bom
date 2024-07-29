@@ -48,11 +48,11 @@
         <we-sdk-spring.version>1.0.5</we-sdk-spring.version>
         <we-tx-observer.version>1.5.1</we-tx-observer.version>
         <wrc-common.version>1.1.1</wrc-common.version>
-        <feign.version>11.10</feign.version>
-        <netty.version>4.1.34.Final</netty.version>
-        <grpc.version>1.20.0</grpc.version>
-        <kotlin.version>1.6.21</kotlin.version>
-        <kotlin.coroutines.version>1.6.0</kotlin.coroutines.version>
+        <feign.version>13.2.1</feign.version>
+        <netty.version>4.1.110.Final</netty.version>
+        <grpc.version>1.64.0</grpc.version>
+        <kotlin.version>1.9.10</kotlin.version>
+        <kotlin.coroutines.version>1.8.1</kotlin.coroutines.version>
     </properties>
 
     <scm>
